@@ -12,7 +12,7 @@ function get_username(object $pdo ,string $username){
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
-        echo $result;
+        
 }
 
 function get_email(object $pdo ,string $email){
@@ -24,7 +24,28 @@ function get_email(object $pdo ,string $email){
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
-    echo $result;
+    
 }
+
+function set_user($pdo, $pwd, $username, $email){
+
+    $query = "INSERT INTO members (username, pwd, email) 
+    VALUES (:username, :pwd, :email);";
+    $stmt = $pdo->prepare($query);
+    $options = [
+        'cost' => 12
+    ];
+    
+    $hashedPWD = password_hash($pwd, PASSWORD_BCRYPT, $options);
+    $stmt->bindParam(":username",$username);
+    
+    $stmt->bindParam(":pwd",$hashedPWD);
+    
+    $stmt->bindParam(":email",$email);
+    
+    $stmt->execute();
+    
+    
+};
 
 ?>

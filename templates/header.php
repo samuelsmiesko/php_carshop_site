@@ -1,4 +1,9 @@
 
+<?php 
+
+require_once 'includes/login_view.inc.php';
+
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +33,15 @@
       <button class="btn btn-success" type="submit">Go</button>
     </div>
   </div>
-</div>
+    </div>
 
+
+
+<h3>
+  <?php
+    output_username()
+  ?>
+</h3>
 <div class="w-100">
 
 <?php include('topcarosel.php'); ?>  
