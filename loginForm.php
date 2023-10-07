@@ -1,8 +1,8 @@
 <?php 
 
-require_once 'includes/config_session.inc.php';
-require_once 'includes/signup_view.inc.php';
-require_once 'includes/login_view.inc.php';
+require_once 'templates/includes/config_session.inc.php';
+require_once 'templates/includes/signup_view.inc.php';
+require_once 'templates/includes/login_view.inc.php';
 
 
 ?> 
@@ -27,7 +27,8 @@ require_once 'includes/login_view.inc.php';
     <div class="col-sm-6 mt-5 p-2" style="background-color:#f1f1f1" style="z-index:3;">
       
     <?php if(!isset($_SESSION['user_id'])){ ?>
-      <form action="includes/login.inc.php" method="post">
+      <form action="../ajax_php/templates/includes/login.inc.php" method="post">
+              <h4 class=" p-3">Login form</h4>
               <div class="m-3">
                   <label class="form-label" for="username"><b>Username</b></label>
                   <input class="form-control" type="text" placeholder="Username" name="username" >
@@ -36,22 +37,25 @@ require_once 'includes/login_view.inc.php';
                   <label class="form-label" for="password"><b>Password</b></label>
                   <input class="form-control" type="password" placeholder="Password" name="pwd" >
               </div>
-              
-                  <div class="m-3 ">
-                    <button type="submit" class="btn btn-success">Login</button>
-                  </div>
+              <div class="d-flex flex-row">
+                <div class="m-3 ">
+                  <button type="submit" class="btn btn-success">Login</button>
+
+                  <label>
+                  <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+                <span class="psw">Forgot <a href="#">password?</a></span> 
+                </div>
+                
+              </div>
+          
 
       </form>
         
       <?php }?>
-      <form action="includes/logout.inc.php" method="post">
-            <div class="m-3">
-              <button type="submit" class="btn btn-danger">Logout</button>
-            </div>
-            
-      </form>
+
     
-      <form action="includes/signup.inc.php" method="post">
+      <form action="../ajax_php/templates/includes/signup.inc.php" method="post">
       <h4 class=" p-3">Signup form</h4>
         <?php 
         signup_inputs()
@@ -59,12 +63,7 @@ require_once 'includes/login_view.inc.php';
         
         <div class="m-3">
           <button type="submit" class="btn btn-success">Signup</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        
-          <button type="button" class="btn btn-primary">Cancel</button>
-          <span class="psw">Forgot <a href="#">password?</a></span> 
+          
           
         </div>
       </form>

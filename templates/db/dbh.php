@@ -2,8 +2,11 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "samo1234*";
+$password = "";
 $dbname = "ajax";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
+//samo1234*
+
+?>

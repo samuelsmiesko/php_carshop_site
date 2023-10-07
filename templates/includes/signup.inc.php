@@ -48,13 +48,13 @@ if($_SERVER["REQUEST_METHOD"] ==="POST"){
             ];
             $_SESSION["signup_data"] = $signupData;
 
-            header("Location: http://localhost/dashboard/AJAX_PHP/templates/loginForm.php");
+            header("Location: http://localhost/dashboard/AJAX_PHP/loginForm.php");
             die();
         }
-        
+        //C:\xampp\htdocs\dashboard\ajax_php\templates\includes\signup.inc.php
         create_user( $pdo, $pwd,  $username, $email);
         
-        header("Location: http://localhost/dashboard/AJAX_PHP/templates/loginForm.php?signup=success");
+        header("Location: http://localhost/dashboard/AJAX_PHP/loginForm.php?signup=success");
         $pdo = null;
         $stmt = null;
         die();

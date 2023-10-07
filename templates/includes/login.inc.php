@@ -22,7 +22,6 @@ if($_SERVER["REQUEST_METHOD"] ==="POST"){
 
         $result = get_user($pdo,$username);
 
-        print_r($result);
 
         if(is_username_wrong($result)){
             $errors["login_incorrect"] = "Incorrect login info!";
@@ -38,18 +37,23 @@ if($_SERVER["REQUEST_METHOD"] ==="POST"){
 
             $_SESSION["errors_signup"] = $errors;
 
-            header("Location: http://localhost/dashboard/AJAX_PHP/templates/loginForm.php");
+            header("Location: http://localhost/dashboard/AJAX_PHP/loginForm.php");
             die();
         }
-
-        $newSessionId = session_create_id();
-        $sessionId = $newSessionId . "_". $result["id"];
-        session_id($sessionId);
-
-        $SESSION['user_id'] = $result["id"];
-        $SESSION['user_username'] = htmlspecialchars($result["username"]);
-        $SESSION['user_id'] = time();
-
+        
+        // $newSessionId = session_create_id();
+        // $sessionId = $newSessionId . "_". $result["id"];
+        // session_id($sessionId);
+        
+        
+        session_start(); 
+        
+        
+        $_SESSION['user_id'] = $result["id"];
+        
+        $_SESSION['user_username'] = htmlspecialchars($result["username"]);
+        
+        
         header("Location: http://localhost/dashboard/AJAX_PHP/core.php?login=success");
         $pdo = null;
         $statement = null;

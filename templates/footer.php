@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <footer class="bg-dark text-center text-white">
+  <footer class="bg-dark text-center text-white mt-2">
     <!-- Grid container -->
     <div class="container p-3">
       <!-- Section: Social media -->

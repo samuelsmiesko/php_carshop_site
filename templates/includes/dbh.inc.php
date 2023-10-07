@@ -2,7 +2,7 @@
 
 $host = 'localhost';
 $dbuser = "root";
-$dbpassword = "samo1234*";
+$dbpassword = "";
 $dbname = "ajax";
 
 try{
@@ -12,5 +12,5 @@ try{
     die("Connection error: " . $e->getMessage());
 }
 
-
+//samo1234*
 ?>
