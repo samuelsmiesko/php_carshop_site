@@ -23,29 +23,74 @@ if($_SERVER["REQUEST_METHOD"] ==="POST"){
                 
             if(filter_cars_millage($milage)){
                 
-                $n = 0;
+                $a = 0;
                 
                 foreach ($result as $value) {
-                    //echo $n;
                     if($value['Milage'] < $milage){
-                        echo "menej";
+                    }else{
+                        //unset($result[$a]);
+                        $result[$a] ='';
+                    }
+                    ++$a;
+                } 
+            }
+
+            print_r($result);
+            echo '</br>';
+
+            // if(filter_cars_price($price)){
                 
+            //     $n = 0;
+            //     foreach ($result as $value) {
+            //         if($value['price'] <br $price){
+            //         }else{
+            //             unset($result[$n]);
+            //         }
+            //         ++$n;
+            //     } 
+            // }
+
+        
+            if(filter_cars_location($location)){
+                
+                $n = 0;
+                foreach ($result as $value) {
+
+                    if($value['Adress'] === $location){
                         
                     }else{
-
-                        unset($result[$n]);
+                        
+                        //array_splice($result[$n],1);
+                        $result[$n] ='';
                     }
-                    print_r($value);
-                  
                     ++$n;
-                }
-                session_start();
-                
-                $_SESSION['result'] = $result;
+                } 
             }else{
-                
+                echo 'no location found';
             }
+            print_r($result);
+            echo '</br>';
+
+            if(filter_cars_year($year)){
+                
+                  $b = 0;
+                  foreach ($result as $value) {
+
+                     
+                      if($value['Year'] == $year){
+                      }else{
+                          //unset($result[$b]);
+                          
+                          $result[$b] ='';
+                      }
+                      ++$b;
+                } 
+             }
             
+            
+            session_start();
+                
+            $_SESSION['result'] = $result;
 
               
             header("Location: http://localhost/dashboard/AJAX_PHP/filter.php");

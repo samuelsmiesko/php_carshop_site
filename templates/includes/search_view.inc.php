@@ -7,19 +7,19 @@ function output_filtered_cars(){
     
     if(isset($_SESSION['result'])){
         
-        
-        $arrlength = count($_SESSION['result']);
 
+        $arrlength = count($_SESSION['result']);
 
 
         for($i = 0; $i < $arrlength; $i++){
 
-            
-            $dir ="../ajax_php/templates/database/article" . $_SESSION['result'][$i]["id"] . "/"; //;
-    
-            $b = scandir($dir);
 
-            if(boolval($b)=='true'){
+            if(isset($_SESSION['result'][$i]["id"])){
+                
+                $dir ="../ajax_php/templates/database/article" . $_SESSION['result'][$i]["id"] . "/"; 
+            
+                $b = scandir($dir);
+            
                 if (count($b) == 0 || count($b) == 2) {
                     $c = "../ajax_php/templates/database/blank.jpg";
                 } else {
@@ -39,15 +39,13 @@ function output_filtered_cars(){
                         <div class="col-sm-6">
                             <p>Počet kilometrov: <?php echo $_SESSION['result'][$i]["Milage"]; ?></p>
                             <p>Rok výroby: <?php echo $_SESSION['result'][$i]["Year"]; ?></p>
+                            <p>Rok výroby: <?php echo $_SESSION['result'][$i]["Adress"]; ?></p>
+                            <h4>Cena: <?php echo $_SESSION['result'][$i]["Price"]; ?> Eur-</h4>
                         </div>
                     </div>  
                 </div> ;
                 <?php
-            }else{
-                continue;
-            }
-    
-            
+            }  
              
         }; 
 

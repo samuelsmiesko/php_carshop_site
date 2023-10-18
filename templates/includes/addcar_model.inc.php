@@ -8,12 +8,15 @@ function get_last_id(object $pdo){
     $last_id = $pdo->lastInsertId();
     //echo "New record created successfully. Last inserted ID is: " . $last_id;
 
-     $path = "/xampp/htdocs/dashboard/ajax_php/templates/database/article".$last_id;
+    $path = "/xampp/htdocs/dashboard/ajax_php/templates/database/article".$last_id.'/';
 
-     if (!is_dir($path)) {
+    if (!is_dir($path)) {
          mkdir($path, 0777, true);
-     }
-    return $last_id;
+    }
+
+
+    
+    return $path;
 
 };
 
@@ -33,5 +36,8 @@ function add_car_to_table(object $pdo, string $carBrand, string $carModel,
 
 }
 
+function moveFile(string $path, string $photo){
+    move_uploaded_file($photo, $path);
+}
 
 ?>

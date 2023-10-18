@@ -89,9 +89,7 @@
 <div class="w-100  ">
   <nav class="navbar navbar-expand-sm bg-light sticky-top ">
         <ul class="d-none d-sm-flex ms-4 navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="core.php">Gallery</a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="filter.php">Filter</a>
           </li>

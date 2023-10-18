@@ -11,7 +11,9 @@ if($_SERVER["REQUEST_METHOD"] ==="POST"){
     $kilometers = $_POST["NoMiles"];
     $location = $_POST["location"];
     $year = $_POST["NoProduction"];
-    $photo = $_POST["FileForPhoto"];
+    $photo = $_FILES["file"]["tmp_name"];
+
+    echo '<h1>"'.$photo.'</h1>';
     
     try{
 
@@ -30,9 +32,17 @@ if($_SERVER["REQUEST_METHOD"] ==="POST"){
         $result = add_car_to_table($pdo, $carBrand,  $carModel, 
             $kilometers, $location,  $year);
 
-        $$last_id = get_last_id($pdo);
+        $last_id = get_last_id($pdo);
 
-        header("Location: http://localhost/dashboard/AJAX_PHP/filter.php?add=success");
+        $path = get_last_id($pdo);
+        echo '<h2>"'.$path.'</h2>';
+
+        
+        move_uploaded_file($photo, $path.$_FILES["file"]["name"]);
+        
+        
+
+        //header("Location: http://localhost/dashboard/AJAX_PHP/filter.php?add=success");
         $pdo = null;
         $statement = null;
     

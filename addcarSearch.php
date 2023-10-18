@@ -35,7 +35,7 @@ $resultModel = mysqli_query($conn,$queryModel);
 
     });
 </script>
-    <form action="../ajax_php/templates/includes/addcar.inc.php" method="post">
+    <form action="../ajax_php/templates/includes/addcar.inc.php" method="post" enctype="multipart/form-data" name="update">
         <div class="form-group" >
             <label for="sel1">Vyberte značku:</label>
             <select class="form-control mt-3" name='sel1' id="sel1">
@@ -80,8 +80,8 @@ $resultModel = mysqli_query($conn,$queryModel);
         </div>
 
         <div class="mb-3 mt-3">
-            <label for="FileForPhoto" class="form-label">Choose photo</label>
-            <input class="form-control" type="file" name="FileForPhoto" id="formFile">
+            <label for="file" class="form-label">Choose photo</label>
+            <input class="form-control" type="file" name="file" id="formFile">
         </div>
 
         <div class="mb-5 mt-5 text-center">
